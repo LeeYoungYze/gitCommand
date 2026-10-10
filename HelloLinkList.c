@@ -102,6 +102,22 @@ void deleteTotalByElem(LinkList **head, ElemType e) {
         printf("链表里没有与%d相等的元素\n", e);
     }
 }
+void reverse(LinkList **head) {
+    if (is_empty(head)) {
+        printf("链表为空\n");
+        return;
+    }
+    LinkList *prev = NULL;
+    LinkList *cur = *head;
+    LinkList *next = cur->next;
+    while(cur != NULL) {
+        next = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = next;
+    }
+    *head = prev;
+}
 int main() {
     LinkList *head = NULL;
     rearPush(&head, 30);
@@ -115,6 +131,14 @@ int main() {
     //deleteByIndex(&head, 3);
     display(head);
     deleteTotalByElem(&head, 30);
+    display(head);
+    frontPush(&head, 10);
+    rearPush(&head, 30);
+    rearPush(&head, 40);
+    rearPush(&head, 50);
+    rearPush(&head, 60);
+    display(head);
+    reverse(&head);
     display(head);
     return 0;
 }
