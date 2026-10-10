@@ -31,7 +31,7 @@ void rearPush(LinkList **head, ElemType e) {
     }
     t->next = p;
 }
-
+/* 只读，不需要二级指针 */
 void display(LinkList *head) {
     LinkList *p = head;
     while (p != NULL) {
@@ -41,7 +41,6 @@ void display(LinkList *head) {
     printf("\n");
 }
 
-/* 只读，不需要二级指针 */
 int is_empty(LinkList *head) {
     return head == NULL;
 }
@@ -157,10 +156,10 @@ int main() {
     display(head);                 /* 60 50 40 30 20 10 */
 
     /* 额外测一下头部连续相同元素 */
-    rearPush(&head, 30);
-    rearPush(&head, 30);
-    rearPush(&head, 30);
-    display(head);                 /* 60 50 40 30 20 10 30 30 30 */
+    frontPush(&head, 30);
+    frontPush(&head, 30);
+    frontPush(&head, 30);
+    display(head);                 /* 30 30 30 60 50 40 30 20 10 */
     deleteTotalByElem(&head, 30);
     display(head);                 /* 60 50 40 20 10 */
 
