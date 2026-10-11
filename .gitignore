@@ -1,4 +1,6 @@
 /.vscode
-/HelloQueue.exe
-/HelloStack.exe
-/HelloLinkList.exe
+/Queue/HelloQueue.exe
+/Stack/HelloStack.exe
+/LinkList/HelloLinkList.exe
+/Test.c
+/Test.exe
