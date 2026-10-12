@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
-typedef char ElemType;
 typedef struct TreeNode {
-    ElemType data;
+    char data;
     struct TreeNode *left;
     struct TreeNode *right;
 } TreeNode;
@@ -64,9 +63,10 @@ void start(TreeNode *root) {
 }
 int main() {
     TreeNode *root = NULL;
-    char str[] = "124##5##3##";
-    //char str[] = "1(2(4,5),3)";
+    char str[] = "ABD###CE##F#G##";
+    //char str[] = "A(B(D,),C(E,F(,G)))";
     char *point = str;
     createBinaryTree(&root,&point);
     start(root);
+    return 0;
 }
