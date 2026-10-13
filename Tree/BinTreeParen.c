@@ -1,17 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct NodeTree {
+typedef struct TreeNode {
     char data;
-    struct NodeTree *left;
-    struct NodeTree *right;
-} NodeTree;
-//char str[] = "A(B(D,),C(E,F(,G)))";
-NodeTree *createBinaryTree(char **str) {
+    struct TreeNode *left;
+    struct TreeNode *right;
+} TreeNode;
+TreeNode *createBinaryTree(char **str) {
     if (**str == '\0' || **str == ',' || **str == ')') {
-        //(*str)++;
         return NULL;
     }
-    NodeTree *t = (NodeTree *)malloc(sizeof(NodeTree));
+    TreeNode *t = (TreeNode *)malloc(sizeof(TreeNode));
     t->data = **str;
     t->left = NULL;
     t->right = NULL;
@@ -29,7 +27,7 @@ NodeTree *createBinaryTree(char **str) {
     }
     return t;
 }
-void preorder(NodeTree *root) {
+void preorder(TreeNode *root) {
     if(root == NULL){
         return;
     }
@@ -37,7 +35,7 @@ void preorder(NodeTree *root) {
     preorder(root->left);
     preorder(root->right);
 }
-void inorder(NodeTree *root) {
+void inorder(TreeNode *root) {
     if(root == NULL){
         return;
     }
@@ -45,7 +43,7 @@ void inorder(NodeTree *root) {
     printf("%c ",root->data);
     inorder(root->right);
 }
-void postorder(NodeTree *root) {
+void postorder(TreeNode *root) {
     if(root == NULL){
         return;
     }
@@ -53,7 +51,7 @@ void postorder(NodeTree *root) {
     postorder(root->right);
     printf("%c ",root->data);
 }
-void start(NodeTree *root) {
+void start(TreeNode *root) {
     preorder(root);
     printf("\n");
     inorder(root);
@@ -64,7 +62,7 @@ void start(NodeTree *root) {
 int main() {
     char str[] = "A(B(D,),C(E,F(,G)))";
     char *p = str;
-    NodeTree *root = createBinaryTree(&p);
+    TreeNode *root = createBinaryTree(&p);
     start(root);
     return 0;
 }
